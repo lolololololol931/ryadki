@@ -20,13 +20,42 @@ void countsymbol(string str, int& letters, int& digits, int& others) {
         else others++;
     }
 }
+//n3
+int countwords(string str) {
+    int count = 0;
+    bool inWord = false;
+    for (int i = 0; i < str.size(); i++) {
+        if (!isspace(str[i])) {
+            if (!inWord) {
+                count++;
+                inWord = true;
+            }
+        }
+        else {
+            inWord = false;
+        }
+    }
+    return count;
+}
+//n4
+bool palindrome(string str) {
+    int left = 0, right = str.size() - 1;
+    while (left < right) {
+        if (tolower(str[left]) != tolower(str[right])) return false;
+        left++; right--;
+    }
+    return true;
+}
+
 
 int main() {
     string str;
     int letters, digits, others;
     cout << "vvedit ryadok: ";
-    cin >> str;
+    getline(cin, str);
     cout << "N1: " << replacespacetab(str) << endl;
     countsymbol(str, letters, digits, others);
     cout << "N2 letters: " << letters << ", digits: " << digits << ", other: " << others << endl;
+    cout << "N3: " << countwords(str) << endl;
+    cout << "N4: " << (palindrome(str) ? "yes" : "no") << endl;
 }
