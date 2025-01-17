@@ -46,8 +46,21 @@ bool palindrome(string str) {
     }
     return true;
 }
-
-
+//n5
+string replacedots(string str) {
+    for (int i = 0; i < str.size(); i++) {
+        if (str[i] == '.') str[i] = '!';
+    }
+    return str;
+}
+//n6
+int countfind(string str, char searchChar) {
+    int count = 0;
+    for (int i = 0; i < str.size(); i++) {
+        if (str[i] == searchChar) count++;
+    }
+    return count;
+}
 int main() {
     string str;
     int letters, digits, others;
@@ -58,4 +71,9 @@ int main() {
     cout << "N2 letters: " << letters << ", digits: " << digits << ", other: " << others << endl;
     cout << "N3: " << countwords(str) << endl;
     cout << "N4: " << (palindrome(str) ? "yes" : "no") << endl;
+    cout << "N5: " << replacedots(str) << endl;
+    char searchChar;
+    cout << "N6 type symbol to find: ";
+    cin >> searchChar;
+    cout << "time of symbol: '" << searchChar << "': " << countfind(str, searchChar) << endl;
 }
