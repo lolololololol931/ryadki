@@ -1,20 +1,32 @@
-﻿// ryadki.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <cctype>
+#include <string>
+#include <sstream>
+using namespace std;
 
-#include <iostream>
-
-int main()
-{
-    std::cout << "Hello World!\n";
+//n1
+string replacespacetab(string str) {
+    for (int i = 0; i < str.size(); i++) {
+        if (str[i] == ' ') str[i] = '\t';
+    }
+    return str;
+}
+//n2
+void countsymbol(string str, int& letters, int& digits, int& others) {
+    letters = digits = others = 0;
+    for (int i = 0; i < str.size(); i++) {
+        if (isalpha(str[i])) letters++;
+        else if (isdigit(str[i])) digits++;
+        else others++;
+    }
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+int main() {
+    string str;
+    int letters, digits, others;
+    cout << "vvedit ryadok: ";
+    cin >> str;
+    cout << "N1: " << replacespacetab(str) << endl;
+    countsymbol(str, letters, digits, others);
+    cout << "N2 letters: " << letters << ", digits: " << digits << ", other: " << others << endl;
+}
